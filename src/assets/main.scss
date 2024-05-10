@@ -1,0 +1,65 @@
+@use 'scss-reset/reset';
+
+/* Global Vars -- Colors */
+$red: #C73E1D;
+$yellow: #CBA328;
+$blue: #2B2D42;
+$blue-darker: #232436;
+$gray-lighter: #E1E1E1;
+$gray-light: #C6C6C6;
+$gray: #6C6C6C;
+$gray-dark: #333333;
+$gray-darker: #222222;
+$white: #FFFFFF;
+
+/* Global Vars -- Typography -- Font Families */
+$font-platypi: "Platypi";
+$font-rubik: "Rubik";
+
+/* Global Vars -- Typography -- Font Sizes */
+$em: 16px;
+$font-size-h1: 56px;
+$font-size-h2: 46px;
+$font-size-h3: 36px;
+$font-size-h4: 32px;
+$font-size-h5: 24px;
+$font-size-h6: 18px;
+$size-max: 56px;
+
+$heading-sizes: (
+  h1: $font-size-h1,
+  h2: $font-size-h2,
+  h3: $font-size-h3,
+  h4: $font-size-h4,
+  h5: $font-size-h5,
+  h6: $font-size-h6
+);
+
+@each $heading, $size in $heading-sizes {
+  #{$heading} {
+    font-family: $font-platypi;
+    font-weight: 700;
+    margin-bottom: $em * 1.4;
+    line-height: 1.6em;
+    font-size: clamp(#{$size}, 1vw, #{$size-max});
+  }
+} 
+
+$font-size-paragraph-min: $em;
+$font-size-paragraph-max: $em*1.6;
+
+p {
+    font-family: $font-rubik;
+    font-size: clamp(#{$font-size-paragraph-min}, 1vw, #{$font-size-paragraph-max});
+    line-height: 1.6em;
+    margin-bottom: $em*1.4;
+}
+
+body {
+    font-family: $font-rubik;
+    font-size: clamp(#{$font-size-paragraph-min}, 1vw, #{$font-size-paragraph-max});
+    line-height: 1.6em;
+    font-weight: 400;
+    color: $white;
+    background-color: $blue;
+}

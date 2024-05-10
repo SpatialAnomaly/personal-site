@@ -1,13 +1,50 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+//import HelloWorld from './components/HelloWorld.vue'
+import TheHeader from './components/TheHeader.vue'
+import TheNavbar from './components/TheNavbar.vue'
+import TheFooter from './components/TheFooter.vue'
+
+// Fonts
+import "@fontsource/platypi"
+import "@fontsource/rubik"
 </script>
 
 <template>
+  <TheHeader altTxt = "Rory Hurlburt" />
+  
+  <TheNavbar />
+
+  <section class="content">
+    
+    <div class="content-work">
+      <h1>Test H1</h1>
+      <h2>Test H2</h2>
+      <h3>Test H3</h3>
+      <h4>Test H4</h4>
+      <h5>Test H5</h5>
+      <h6>Test H6</h6>
+      <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, temporibus dolorum repudiandae sapiente eligendi odit debitis illum quibusdam laboriosam obcaecati nulla ab, sit dolor dolore, officia perspiciatis vel animi explicabo?</p>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, temporibus dolorum repudiandae sapiente eligendi odit debitis illum quibusdam laboriosam obcaecati nulla ab, sit dolor dolore, officia perspiciatis vel animi explicabo?</p>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, temporibus dolorum repudiandae sapiente eligendi odit debitis illum quibusdam laboriosam obcaecati nulla ab, sit dolor dolore, officia perspiciatis vel animi explicabo?</p>
+
+    </div>
+    <div class="content-bio">
+
+    </div>
+    <div class="content-contact">
+
+    </div>
+  </section>
+
+  <TheFooter />
+
+
+<!--
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-    <div class="wrapper">
+    <div class="wrapper my-class">
       <HelloWorld msg="Rory Hurlburt Testing" />
 
       <nav>
@@ -18,9 +55,11 @@ import HelloWorld from './components/HelloWorld.vue'
   </header>
 
   <RouterView />
+  -->
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+/*
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -56,6 +95,12 @@ nav a:first-of-type {
   border: 0;
 }
 
+.wrapper {
+  &.my-class {
+    background-color: #bada55;
+  }
+}
+
 @media (min-width: 1024px) {
   header {
     display: flex;
@@ -82,4 +127,5 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
+*/
 </style>
