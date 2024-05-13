@@ -6,17 +6,21 @@ import TheNavbar from './components/TheNavbar.vue'
 import TheFooter from './components/TheFooter.vue'
 
 // Fonts
-import "@fontsource/platypi"
-import "@fontsource/rubik"
+import '@fontsource/platypi'
+import '@fontsource/rubik'
+import '@fontsource/material-icons'
 </script>
 
 <template>
-  <TheHeader altTxt = "Rory Hurlburt" />
-  
+  <TheHeader
+    altTxt="Rory Hurlburt - Some Title Blah"
+    wordMarkHeading="Rory Hurlburt"
+    wordMarkSubheading="Some Kind of Subheading"
+  />
+
   <TheNavbar />
 
   <section class="content">
-    
     <div class="content-work">
       <h1>Test H1</h1>
       <h2>Test H2</h2>
@@ -24,23 +28,30 @@ import "@fontsource/rubik"
       <h4>Test H4</h4>
       <h5>Test H5</h5>
       <h6>Test H6</h6>
-      <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, temporibus dolorum repudiandae sapiente eligendi odit debitis illum quibusdam laboriosam obcaecati nulla ab, sit dolor dolore, officia perspiciatis vel animi explicabo?</p>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, temporibus dolorum repudiandae sapiente eligendi odit debitis illum quibusdam laboriosam obcaecati nulla ab, sit dolor dolore, officia perspiciatis vel animi explicabo?</p>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, temporibus dolorum repudiandae sapiente eligendi odit debitis illum quibusdam laboriosam obcaecati nulla ab, sit dolor dolore, officia perspiciatis vel animi explicabo?</p>
-
+      <p class="lead">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, temporibus dolorum
+        repudiandae sapiente eligendi odit debitis illum quibusdam laboriosam obcaecati nulla ab,
+        sit dolor dolore, officia perspiciatis vel animi explicabo?
+      </p>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, temporibus dolorum
+        repudiandae sapiente eligendi odit debitis illum quibusdam laboriosam obcaecati nulla ab,
+        sit dolor dolore, officia perspiciatis vel animi explicabo?
+      </p>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, temporibus dolorum
+        repudiandae sapiente eligendi odit debitis illum quibusdam laboriosam obcaecati nulla ab,
+        sit dolor dolore, officia perspiciatis vel animi explicabo?
+      </p>
+      <p><a href="#" class="button">Hello World</a></p>
     </div>
-    <div class="content-bio">
-
-    </div>
-    <div class="content-contact">
-
-    </div>
+    <div class="content-bio"></div>
+    <div class="content-contact"></div>
   </section>
 
   <TheFooter />
 
-
-<!--
+  <!--
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 

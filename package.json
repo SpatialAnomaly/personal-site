@@ -13,6 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@fontsource/material-icons": "^5.0.18",
     "@fontsource/platypi": "^5.0.2",
     "@fontsource/rubik": "^5.0.20",
     "pinia": "^2.1.7",
