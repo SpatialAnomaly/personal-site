@@ -1,0 +1,40 @@
+/* Colors */
+$red: #c73e1d;
+$yellow: #cba328;
+$blue-lighter: #5d6083;
+$blue: #2b2d42;
+$blue-darker: #232436;
+$gray-lighter: #e1e1e1;
+$gray-light: #c6c6c6;
+$gray: #6c6c6c;
+$gray-dark: #333333;
+$gray-darker: #222222;
+$white: #ffffff;
+
+/* Font Families */
+$font-platypi: 'Platypi';
+$font-rubik: 'Rubik';
+$font-material-icons: 'Material Icons';
+
+/* Typography */
+$em: 16px;
+$font-size-h1: 56px;
+$font-size-h2: 46px;
+$font-size-h3: 36px;
+$font-size-h4: 32px;
+$font-size-h5: 24px;
+$font-size-h6: 18px;
+$size-max: 56px;
+$font-size-paragraph-min: $em;
+$font-size-paragraph-max: $em * 1.6;
+
+/* Common Paddings/Margins */
+$gapS: 16px;
+$gapM: 32px;
+$gapL: 64px;
+$gapX: 124px;
+
+/* Supported Widths for Media Queries */
+$screensS: 576px;
+$screensM: 992px;
+$screensL: 1440px;

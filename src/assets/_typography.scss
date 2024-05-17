@@ -1,0 +1,57 @@
+$heading-sizes: (
+  h1: $font-size-h1,
+  h2: $font-size-h2,
+  h3: $font-size-h3,
+  h4: $font-size-h4,
+  h5: $font-size-h5,
+  h6: $font-size-h6
+);
+
+@each $heading, $size in $heading-sizes {
+  #{$heading} {
+    font-family: $font-platypi;
+    font-weight: 700;
+    margin-bottom: $em * 1.4;
+    line-height: 1.6em;
+    font-size: clamp(#{$size}, 1vw, #{$size-max});
+  }
+}
+
+p {
+  font-family: $font-rubik;
+  font-size: clamp(#{$font-size-paragraph-min}, 1vw, #{$font-size-paragraph-max});
+  line-height: 1.6em;
+  margin-bottom: $em * 1.4;
+}
+
+body {
+  font-family: $font-rubik;
+  font-size: clamp(#{$font-size-paragraph-min}, 1vw, #{$font-size-paragraph-max});
+  line-height: 1.6em;
+  font-weight: 400;
+  color: $white;
+  background-color: $blue;
+}
+
+a:link:not(.button),
+a:visited:not(.button) {
+  color: $white;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a:hover:not(.button) {
+  color: $yellow;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a:active:not(.button) {
+  color: $gray-lighter;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.material-icon {
+  font-family: $font-material-icons;
+}

@@ -1,28 +1,23 @@
 <script setup lang="ts">
-defineProps<{}>()
+import { defineProps } from 'vue'
+
+defineProps<{
+  navButtons: Array<{ title: string; icon: string; path: string; id: string }>
+}>()
 </script>
+
 <template>
-  <nav class="in-page-navbar">
-    <div class="aesthetic-picker-wrap"></div>
-    <div class="in-page-navbar-items">
-      <ul>
-        <li>
-          <a href="#" class="in-page-navbar-item nav-button">
-            <span>Work</span>
-            <span class="material-symbols-outlined"> check_indeterminate_small </span>
+  <div class="wrap">
+    <nav class="in-page-navbar">
+      <div class="aesthetic-picker-wrap"></div>
+      <ul class="in-page-navbar-items">
+        <li v-for="navItem in navButtons" :key="navItem.id">
+          <a :href="navItem.path" :id="navItem.id" class="nav-button">
+            <span>{{ navItem.title }}</span>
+            <i :class="navItem.icon"></i>
           </a>
         </li>
-        <li>
-          <a href="#" class="in-page-navbar-item nav-button"
-            ><span>Bio</span> <i class="icon-bio"></i
-          ></a>
-        </li>
-        <li>
-          <a href="#" class="in-page-navbar-item nav-button"
-            ><span>Contact</span> <i class="icon-contact"></i
-          ></a>
-        </li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </template>

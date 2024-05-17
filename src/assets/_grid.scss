@@ -1,0 +1,24 @@
+// It's a simple grid for a simple feeling - by Lyle Lovett
+.wrap {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 $gapL;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $gapS;
+  @media (max-width: $screensM) {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  @media (max-width: $screensS) {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
+
+.item {
+  padding: $gapS;
+  border: 1px solid #ccc;
+}

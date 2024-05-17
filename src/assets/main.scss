@@ -1,151 +1,23 @@
 @use 'scss-reset/reset';
 
-/* Global Vars -- Colors */
-$red: #c73e1d;
-$yellow: #cba328;
-$blue-lighter: #5d6083;
-$blue: #2b2d42;
-$blue-darker: #232436;
-$gray-lighter: #e1e1e1;
-$gray-light: #c6c6c6;
-$gray: #6c6c6c;
-$gray-dark: #333333;
-$gray-darker: #222222;
-$white: #ffffff;
+// partials
+@import 'variables';
+@import 'mixins';
 
-/* Global Vars -- Typography -- Font Families */
-$font-platypi: 'Platypi';
-$font-rubik: 'Rubik';
-$font-material-icons: 'Material Icons';
+// frame
+@import 'grid';
 
-/* Global Vars -- Typography */
-$em: 16px;
-$font-size-h1: 56px;
-$font-size-h2: 46px;
-$font-size-h3: 36px;
-$font-size-h4: 32px;
-$font-size-h5: 24px;
-$font-size-h6: 18px;
-$size-max: 56px;
+// parts
+@import 'typography';
+@import 'buttons';
+@import 'forms';
 
-$heading-sizes: (
-  h1: $font-size-h1,
-  h2: $font-size-h2,
-  h3: $font-size-h3,
-  h4: $font-size-h4,
-  h5: $font-size-h5,
-  h6: $font-size-h6
-);
-
-@each $heading, $size in $heading-sizes {
-  #{$heading} {
-    font-family: $font-platypi;
-    font-weight: 700;
-    margin-bottom: $em * 1.4;
-    line-height: 1.6em;
-    font-size: clamp(#{$size}, 1vw, #{$size-max});
-  }
-}
-
-$font-size-paragraph-min: $em;
-$font-size-paragraph-max: $em * 1.6;
-
-p {
-  font-family: $font-rubik;
-  font-size: clamp(#{$font-size-paragraph-min}, 1vw, #{$font-size-paragraph-max});
-  line-height: 1.6em;
-  margin-bottom: $em * 1.4;
-}
-
-body {
-  font-family: $font-rubik;
-  font-size: clamp(#{$font-size-paragraph-min}, 1vw, #{$font-size-paragraph-max});
-  line-height: 1.6em;
-  font-weight: 400;
-  color: $white;
-  background-color: $blue;
-}
-
-a:link:not(.button),
-a:visited:not(.button) {
-  color: $white;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-a:hover:not(.button) {
-  color: $yellow;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-a:active:not(.button) {
-  color: $gray-lighter;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.material-icon {
-  font-family: $font-material-icons;
-}
-
-/* Parts -- Buttons */
-.button:link,
-.button:visited,
-.button {
-  display: inline-block;
-  font-size: $em;
-  font-weight: 700;
-  font-family: $font-rubik;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  line-height: 1.8em;
-  padding: 4px 32px;
-  background-color: $white;
-  color: $blue;
-  border-radius: 12px;
-  transition: all 0.08s linear;
-}
-
-.button:hover {
-  background-color: $gray-lighter;
-  color: $blue-darker;
-}
-
-.button:active {
-  background-color: $blue-lighter;
-  color: $white;
-}
-
-a.nav-button:link,
-a.nav-button:visited {
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-  font-size: $em;
-  font-weight: 700;
-  font-family: $font-rubik;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  line-height: 1.8em;
-  padding: 8px 32px;
-  background-color: $blue-darker;
-  color: $white;
-  border-radius: 12px;
-  transition: all 0.08s linear;
-}
-
-a.nav-button:hover {
-  background-color: $yellow;
-  color: $blue-darker;
-}
-
-a.nav-button:active {
-  background-color: $blue-lighter;
-  color: $blue-darker;
-}
+// components
+@import 'header';
+@import 'footer';
+@import 'navbar';
+@import 'cards';
+@import 'gallery';
+@import 'modalControl';
+@import 'imageAndContent';
+@import 'aestheticPicker';
