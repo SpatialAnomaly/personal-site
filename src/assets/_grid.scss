@@ -1,24 +1,70 @@
-// It's a simple grid for a simple feeling - by Lyle Lovett
-.wrap {
-  width: 100%;
+// Variables for breakpoints and spacing
+$lg-breakpoint: 992px;
+$md-breakpoint: 577px;
+$sm-breakpoint: 576px;
+
+$lg-padding: 64px;
+$md-padding: 32px;
+$sm-padding: 16px;
+
+$lg-gap: 32px;
+$md-gap: 32px;
+$sm-gap: 16px;
+
+.container {
   max-width: 1440px;
+  padding-left: $lg-padding;
+  padding-right: $lg-padding;
   margin: 0 auto;
-  padding: 0 $gapL;
+
+  @media (max-width: $lg-breakpoint) {
+    padding-left: $md-padding;
+    padding-right: $md-padding;
+  }
+
+  @media (max-width: $sm-breakpoint) {
+    padding-left: $sm-padding;
+    padding-right: $sm-padding;
+  }
 }
 
-.grid-container {
+.row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: $gapS;
-  @media (max-width: $screensM) {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: $lg-gap;
+  grid-template-columns: repeat(6, 1fr);
+
+  @media (max-width: $lg-breakpoint) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: $md-gap;
   }
-  @media (max-width: $screensS) {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+  @media (max-width: $sm-breakpoint) {
+    grid-template-columns: 1fr;
+    grid-gap: $sm-gap;
   }
 }
 
-.item {
-  padding: $gapS;
-  border: 1px solid #ccc;
+// Column span classes for large screens (6 columns)
+@for $i from 1 through 6 {
+  .column-#{$i} {
+    grid-column: span $i;
+  }
+}
+
+// Column span classes for medium screens (4 columns)
+@for $i from 1 through 4 {
+  .column-md-#{$i} {
+    @media (max-width: $lg-breakpoint) {
+      grid-column: span $i;
+    }
+  }
+}
+
+// Column span classes for small screens (1 column)
+@for $i from 1 through 1 {
+  .column-sm-#{$i} {
+    @media (max-width: $sm-breakpoint) {
+      grid-column: span $i;
+    }
+  }
 }
