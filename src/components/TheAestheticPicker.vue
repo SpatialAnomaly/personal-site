@@ -1,11 +1,14 @@
 <script setup lang="ts">
-defineProps<{}>()
+defineProps<{
+  title: string
+}>()
 </script>
 
 <template>
   <div class="aesthetic-picker-wrap">
     <button class="aesthetic-picker-button">
-      <span>Aesthetic Picker</span><i class="fa fa-caret-down"></i>
+      <span>{{ title }}</span
+      ><i class="fa fa-caret-down"></i>
     </button>
     <div class="aesthetic-picker-dropdown" v-show="false">
       <ul>

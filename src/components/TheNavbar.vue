@@ -9,7 +9,7 @@ defineProps<{
 
 <template>
   <nav class="in-page-navbar">
-    <TheAestheticPicker />
+    <TheAestheticPicker title="Choose Aesthetic" />
     <ul class="in-page-navbar-items">
       <li v-for="navItem in navButtons" :key="navItem.id">
         <BaseButton :navItem="navItem" />
