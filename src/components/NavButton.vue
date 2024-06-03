@@ -8,8 +8,7 @@ defineProps<{
 <template>
   <a :href="navItem.path" :id="navItem.id" class="nav-button">
     <span>{{ navItem.title }}</span>
-    <i v-if="navItem.icon" :class="navItem.icon"></i>
-    <span v-else>Hello World</span>
+    <i :class="navItem.icon"></i>
   </a>
 </template>
 

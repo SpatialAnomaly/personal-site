@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import TheAestheticPicker from './TheAestheticPicker.vue'
+import NavButton from './NavButton.vue'
 
 defineProps<{
   navButtons: Array<{ title: string; icon: string; path: string; id: string }>
@@ -12,7 +13,7 @@ defineProps<{
     <TheAestheticPicker title="Choose Aesthetic" />
     <ul class="in-page-navbar-items">
       <li v-for="navItem in navButtons" :key="navItem.id">
-        <BaseButton :navItem="navItem" />
+        <NavButton :navItem="navItem" />
       </li>
     </ul>
   </nav>
