@@ -65,11 +65,15 @@ const currentColor = computed(() => {
 
 // TODO
 /*
-Fix the type issue with nav buttons and help organize the custom types so they are easier to manage.
+Help clean up workspace
+
+Help organize the custom types so they are easier to manage.
 
 Break the cards up into their own component-s
 
 How would one handle something global like a site name?
+
+Explore routing
 */
 </script>
 
@@ -85,6 +89,11 @@ How would one handle something global like a site name?
 
   <section id="content-work" class="content">
     <div class="container">
+      <div class="row">
+        <div class="column-6 column-md-6">
+          <h1>Work</h1>
+        </div>
+      </div>
       <div class="row">
         <!-- Card 1 -->
         <div class="column-3 column-md-2">
@@ -244,7 +253,7 @@ How would one handle something global like a site name?
             </picture>
           </div>
           <div class="column-4 column-md-2">
-            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+            <h1>BIO: Lorem ipsum dolor sit amet.</h1>
             <p class="lead">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi eius, excepturi
               nobis animi aut dolores esse reprehenderit molestiae quis? Fuga illo commodi
@@ -366,7 +375,7 @@ How would one handle something global like a site name?
 @use '@/assets/_mixins.scss' as mixins;
 
 .content {
-  padding: vars.$gapL;
+  padding: vars.$gapL 0;
 }
 
 // Card
