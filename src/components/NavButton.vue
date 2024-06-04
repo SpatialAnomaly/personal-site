@@ -1,12 +1,20 @@
+<script lang="ts">
+export type NavButtonProps = {
+  title: string
+  icon: string
+  path: string
+  id: string
+}
+</script>
+
 <script setup lang="ts">
-import type { NavItem } from '../types/customTypes'
 defineProps<{
-  navItem: NavItem
+  navItem: NavButtonProps
 }>()
 </script>
 
 <template>
-  <a :href="navItem.path" :id="navItem.id" class="nav-button">
+  <a :id="navItem.id" class="nav-button">
     <span>{{ navItem.title }}</span>
     <i :class="navItem.icon"></i>
   </a>
@@ -15,6 +23,7 @@ defineProps<{
 <style scoped lang="scss">
 @use '@/assets/_variables.scss' as vars;
 
+a.nav-button,
 a.nav-button:link,
 a.nav-button:visited {
   display: inline-flex;
@@ -36,6 +45,8 @@ a.nav-button:visited {
   color: vars.$white;
   border-radius: 12px;
   transition: all 0.08s linear;
+  cursor: pointer;
+
   span {
     flex: 0 0 auto;
   }

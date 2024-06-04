@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import type { NavItem } from '../types/customTypes'
-defineProps<{
-  navItem: NavItem
-}>()
+defineProps<{}>()
 </script>
 
 <template>

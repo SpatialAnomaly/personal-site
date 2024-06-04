@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import type { BaseButton } from '../types/customTypes'
-
-defineProps<{
-  baseButton: BaseButton
+const props = defineProps<{
+  title: string
+  path: string
 }>()
 </script>
 
 <template>
-  <a :href="baseButton.path" class="button">
-    {{ baseButton.title }}
+  <a :href="props.path" class="button">
+    {{ props.title }}
   </a>
 </template>
 

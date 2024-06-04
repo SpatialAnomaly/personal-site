@@ -1,11 +1,27 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import TheAestheticPicker from './TheAestheticPicker.vue'
-import NavButton from './NavButton.vue'
+import NavButton, { type NavButtonProps } from './NavButton.vue'
 
-defineProps<{
-  navButtons: Array<{ title: string; icon: string; path: string; id: string }>
-}>()
+const navButtons: NavButtonProps[] = [
+  {
+    title: 'Work',
+    icon: 'fa-solid fa-gear',
+    path: '/work',
+    id: 'nav-item-work'
+  },
+  {
+    title: 'Bio',
+    icon: 'fa-solid fa-info-circle',
+    path: '/bio',
+    id: 'nav-item-bio'
+  },
+  {
+    title: 'Contact',
+    icon: 'fa-solid fa-envelope',
+    path: '/contact',
+    id: 'nav-item-contact'
+  }
+]
 </script>
 
 <template>
@@ -13,7 +29,7 @@ defineProps<{
     <TheAestheticPicker title="Choose Aesthetic" />
     <ul class="in-page-navbar-items">
       <li v-for="navItem in navButtons" :key="navItem.id">
-        <NavButton :navItem="navItem" />
+        <NavButton :navItem="navItem" @click.prevent="$emit('updateView', navItem.title)" />
       </li>
     </ul>
   </nav>

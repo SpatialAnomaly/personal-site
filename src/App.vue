@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import type { NavItem, SocialItem } from './types/customTypes'
+import type { SocialItem } from './types/customTypes'
 
 import TheHeader from './components/TheHeader.vue'
 import TheNavbar from './components/TheNavbar.vue'
 import TheFooter from './components/TheFooter.vue'
+import BaseButton from './components/BaseButton.vue'
 
 // Fonts
 import '@fontsource/platypi'
@@ -16,27 +16,6 @@ function onRory() {
   alert('toot')
 }
 */
-
-const navItems: NavItem[] = [
-  {
-    title: 'Work',
-    icon: 'fa-solid fa-gear',
-    path: '/work',
-    id: 'nav-item-work'
-  },
-  {
-    title: 'Bio',
-    icon: 'fa-solid fa-info-circle',
-    path: '/bio',
-    id: 'nav-item-bio'
-  },
-  {
-    title: 'Contact',
-    icon: 'fa-solid fa-envelope',
-    path: '/contact',
-    id: 'nav-item-contact'
-  }
-]
 
 const socialItems: SocialItem[] = [
   {
@@ -50,6 +29,10 @@ const socialItems: SocialItem[] = [
     path: 'https://github.com/SpatialAnomaly'
   }
 ]
+
+type CurrentView = 'Work' | 'Bio' | 'Contact'
+
+const currentView = ref<CurrentView>('Bio')
 
 /*
 const clickCount = ref(0)
@@ -65,9 +48,6 @@ const currentColor = computed(() => {
 
 // TODO
 /*
-Help clean up workspace
-
-Help organize the custom types so they are easier to manage.
 
 Break the cards up into their own component-s
 
@@ -85,9 +65,9 @@ Explore routing
     :socials="socialItems"
   />
 
-  <TheNavbar :navButtons="navItems" />
+  <TheNavbar @updateView="currentView = $event" />
 
-  <section id="content-work" class="content">
+  <section v-if="currentView === 'Work'" class="content">
     <div class="container">
       <div class="row">
         <div class="column-6 column-md-6">
@@ -124,7 +104,7 @@ Explore routing
                 </p>
               </div>
               <div class="card-action">
-                <BaseButton title="Learn More" path="#" />
+                <BaseButton title="Hello World" path="#" />
               </div>
             </div>
           </div>
@@ -236,103 +216,101 @@ Explore routing
         </div>
       </div>
     </div>
-
-    <div id="content-bio" class="content">
-      <div class="container">
-        <div class="row">
-          <div class="column-2 column-md-2">
-            <picture>
-              <!-- Large devices (≥992px) -->
-              <source srcset="https://placehold.co/1200x1200" media="(min-width: 992px)" />
-              <!-- Medium devices (≥577px and <992px) -->
-              <source srcset="https://placehold.co/800x800" media="(min-width: 577px)" />
-              <!-- Small devices (<577px) -->
-              <source srcset="https://placehold.co/400x400" media="(max-width: 576px)" />
-              <!-- Default image if none of the above media queries match -->
-              <img src="https://placehold.co/800x800" alt="An image placeholder" />
-            </picture>
-          </div>
-          <div class="column-4 column-md-2">
-            <h1>BIO: Lorem ipsum dolor sit amet.</h1>
-            <p class="lead">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi eius, excepturi
-              nobis animi aut dolores esse reprehenderit molestiae quis? Fuga illo commodi
-              doloremque odio aspernatur, eos sit tempora expedita autem.
-            </p>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. In impedit illo non commodi
-              molestiae similique itaque deleniti perferendis, dolores asperiores magnam? Adipisci
-              alias exercitationem facilis magni blanditiis deleniti incidunt laboriosam?
-            </p>
-          </div>
+  </section>
+  <section v-if="currentView === 'Bio'" class="content">
+    <div class="container">
+      <div class="row">
+        <div class="column-2 column-md-2">
+          <picture>
+            <!-- Large devices (≥992px) -->
+            <source srcset="https://placehold.co/1200x1200" media="(min-width: 992px)" />
+            <!-- Medium devices (≥577px and <992px) -->
+            <source srcset="https://placehold.co/800x800" media="(min-width: 577px)" />
+            <!-- Small devices (<577px) -->
+            <source srcset="https://placehold.co/400x400" media="(max-width: 576px)" />
+            <!-- Default image if none of the above media queries match -->
+            <img src="https://placehold.co/800x800" alt="An image placeholder" />
+          </picture>
         </div>
-        <div class="row">
-          <div class="column-2 column-md-2">
-            <h3>Soft Skills</h3>
-            <ul>
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Lorem ipsum dolor sit amet</li>
-            </ul>
-          </div>
-          <div class="column-2 column-md-2">
-            <h3>UX / UI Visual Design</h3>
-            <ul>
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Lorem ipsum dolor sit amet</li>
-            </ul>
-          </div>
-          <div class="column-2 column-md-2">
-            <h3>Front-End</h3>
-            <ul>
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Lorem ipsum dolor sit amet</li>
-            </ul>
-          </div>
+        <div class="column-4 column-md-2">
+          <h1>BIO: Lorem ipsum dolor sit amet.</h1>
+          <p class="lead">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi eius, excepturi nobis
+            animi aut dolores esse reprehenderit molestiae quis? Fuga illo commodi doloremque odio
+            aspernatur, eos sit tempora expedita autem.
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. In impedit illo non commodi
+            molestiae similique itaque deleniti perferendis, dolores asperiores magnam? Adipisci
+            alias exercitationem facilis magni blanditiis deleniti incidunt laboriosam?
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column-2 column-md-2">
+          <h3>Soft Skills</h3>
+          <ul>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+          </ul>
+        </div>
+        <div class="column-2 column-md-2">
+          <h3>UX / UI Visual Design</h3>
+          <ul>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+          </ul>
+        </div>
+        <div class="column-2 column-md-2">
+          <h3>Front-End</h3>
+          <ul>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
+          </ul>
         </div>
       </div>
     </div>
-
-    <div id="content-contact" class="content">
-      <div class="container">
-        <div class="row">
-          <div class="column-6 column-md-6">
-            <h1>Contact</h1>
-            <form>
-              <div class="form-element">
-                <div class="form-label">
-                  <label>Something Label Blah</label>
-                </div>
-                <div class="form-control">
-                  <input type="text" placeholder="hello world" />
-                </div>
+  </section>
+  <section v-if="currentView === 'Contact'" class="content">
+    <div class="container">
+      <div class="row">
+        <div class="column-6 column-md-6">
+          <h1>Contact</h1>
+          <form>
+            <div class="form-element">
+              <div class="form-label">
+                <label>Something Label Blah</label>
               </div>
-              <div class="form-element">
-                <div class="form-label">
-                  <label>Something Label Blah</label>
-                </div>
-                <div class="form-control">
-                  <input type="text" placeholder="hello world" />
-                </div>
+              <div class="form-control">
+                <input type="text" placeholder="hello world" />
               </div>
-              <div class="form-element">
-                <div class="form-label">
-                  <label>Something Label Blah</label>
-                </div>
-                <div class="form-control">
-                  <input type="text" placeholder="hello world" />
-                </div>
+            </div>
+            <div class="form-element">
+              <div class="form-label">
+                <label>Something Label Blah</label>
               </div>
-            </form>
-          </div>
+              <div class="form-control">
+                <input type="text" placeholder="hello world" />
+              </div>
+            </div>
+            <div class="form-element">
+              <div class="form-label">
+                <label>Something Label Blah</label>
+              </div>
+              <div class="form-control">
+                <input type="text" placeholder="hello world" />
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
