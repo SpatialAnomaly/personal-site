@@ -118,6 +118,7 @@ header {
       padding: 0;
       margin: 0;
       flex: 0 0 auto;
+      font-size: 24px;
     }
   }
 }

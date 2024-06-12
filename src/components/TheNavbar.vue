@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import TheAestheticPicker from './TheAestheticPicker.vue'
 import NavButton, { type NavButtonProps } from './NavButton.vue'
+import { ref } from 'vue'
 
 const navButtons: NavButtonProps[] = [
   {
@@ -22,6 +23,16 @@ const navButtons: NavButtonProps[] = [
     id: 'nav-item-contact'
   }
 ]
+
+const activeItem = ref('nav-item-work') // Default active item
+
+function isActive(navItemId: string) {
+  return activeItem.value === navItemId ? 'active' : 'inactive'
+}
+
+function handleNavItemClick(navItemId: string) {
+  activeItem.value = navItemId // Update active item on click
+}
 </script>
 
 <template>
@@ -29,7 +40,11 @@ const navButtons: NavButtonProps[] = [
     <TheAestheticPicker title="Choose Aesthetic" />
     <ul class="in-page-navbar-items">
       <li v-for="navItem in navButtons" :key="navItem.id">
-        <NavButton :navItem="navItem" @click.prevent="$emit('updateView', navItem.title)" />
+        <NavButton
+          :navItem="navItem"
+          :state="isActive(navItem.id)"
+          @click.prevent="$emit('updateView', navItem.id), handleNavItemClick(navItem.id)"
+        />
       </li>
     </ul>
   </nav>

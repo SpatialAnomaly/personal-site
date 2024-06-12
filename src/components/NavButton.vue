@@ -8,15 +8,16 @@ export type NavButtonProps = {
 </script>
 
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   navItem: NavButtonProps
+  state: string
 }>()
 </script>
 
 <template>
-  <a :id="navItem.id" class="nav-button">
-    <span>{{ navItem.title }}</span>
-    <i :class="navItem.icon"></i>
+  <a :id="props.navItem.id" :class="'nav-button ' + props.state">
+    <span>{{ props.navItem.title }}</span>
+    <i :class="props.navItem.icon"></i>
   </a>
 </template>
 
@@ -56,11 +57,15 @@ a.nav-button:visited {
   }
 }
 
+.nav-button.active,
+a.nav-button.active,
+.nav-button:hover,
 a.nav-button:hover {
   background-color: vars.$yellow;
   color: vars.$blue-darker;
 }
 
+.nav-button:active,
 a.nav-button:active {
   background-color: vars.$blue-lighter;
   color: vars.$blue-darker;

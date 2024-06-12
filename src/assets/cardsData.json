@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Card 1",
+    "description": "This is the description for card 1.",
+    "color": "card-yellow",
+    "image": {
+      "src": "https://placehold.co/800x600",
+      "alt": "Card 1 Placeholder",
+      "srcset": {
+        "small": "https://placehold.co/400x300",
+        "medium": "https://placehold.co/800x600",
+        "large": "https://placehold.co/1600x1200"
+      }
+    },
+    "link": "/card1link"
+  },
+  {
+    "title": "Card 2",
+    "description": "This is the description for card 2.",
+    "color": "card-red",
+    "image": {
+      "src": "https://placehold.co/800x600",
+      "alt": "Card 2 Placeholder",
+      "srcset": {
+        "small": "https://placehold.co/400x300",
+        "medium": "https://placehold.co/800x600",
+        "large": "https://placehold.co/1600x1200"
+      }
+    },
+    "link": "/card2link"
+  },
+  {
+    "title": "Card 3",
+    "description": "This is the description for card 3.",
+    "color": "card-red",
+    "image": {
+      "src": "https://placehold.co/800x600",
+      "alt": "Card 3 Placeholder",
+      "srcset": {
+        "small": "https://placehold.co/400x300",
+        "medium": "https://placehold.co/800x600",
+        "large": "https://placehold.co/1600x1200"
+      }
+    },
+    "link": "/card3link"
+  },
+  {
+    "title": "Card 4",
+    "description": "This is the description for card 4.",
+    "color": "card-yellow",
+    "image": {
+      "src": "https://placehold.co/800x600",
+      "alt": "Card 4 Placeholder",
+      "srcset": {
+        "small": "https://placehold.co/400x300",
+        "medium": "https://placehold.co/800x600",
+        "large": "https://placehold.co/1600x1200"
+      }
+    },
+    "link": "/card4link"
+  }
+]

@@ -5,13 +5,15 @@ import TheHeader from './components/TheHeader.vue'
 import TheNavbar from './components/TheNavbar.vue'
 import TheFooter from './components/TheFooter.vue'
 import BaseButton from './components/BaseButton.vue'
+import BaseCard from './components/BaseCard.vue'
 
 // Fonts
 import '@fontsource/platypi'
 import '@fontsource/rubik'
 
 import { computed, ref } from 'vue'
-/* 
+import { onMounted } from 'vue'
+/*
 function onRory() {
   alert('toot')
 }
@@ -30,9 +32,24 @@ const socialItems: SocialItem[] = [
   }
 ]
 
-type CurrentView = 'Work' | 'Bio' | 'Contact'
+type CurrentView = 'nav-item-work' | 'nav-item-bio' | 'nav-item-contact'
+const currentView = ref<CurrentView>('nav-item-work')
 
-const currentView = ref<CurrentView>('Bio')
+// Cards
+const cards = ref([])
+
+const fetchCards = async () => {
+  try {
+    const response = await fetch('./src/assets/cardsData.json')
+    cards.value = await response.json()
+  } catch (error) {
+    console.error('Error fetching card data:', error)
+  }
+}
+
+onMounted(() => {
+  fetchCards()
+})
 
 /*
 const clickCount = ref(0)
@@ -66,286 +83,136 @@ Explore routing
   />
 
   <TheNavbar @updateView="currentView = $event" />
-
-  <section v-if="currentView === 'Work'" class="content">
-    <div class="container">
-      <div class="row">
-        <div class="column-6 column-md-6">
-          <h1>Work</h1>
+  <!-- Work -->
+  <Transition name="fade">
+    <section v-if="currentView === 'nav-item-work'" class="content">
+      <div class="container">
+        <div class="row">
+          <div class="column-6 column-md-6">
+            <h1>Work</h1>
+          </div>
+        </div>
+        <div class="row">
+          <BaseCard v-for="(card, index) in cards" :key="index" :card="card" />
         </div>
       </div>
-      <div class="row">
-        <!-- Card 1 -->
-        <div class="column-3 column-md-2">
-          <div class="card card-red">
-            <div class="card-thumb">
-              <picture>
-                <!-- Large devices (≥992px) -->
-                <source srcset="https://placehold.co/1600x1200" media="(min-width: 992px)" />
-                <!-- Medium devices (≥577px and <992px) -->
-                <source srcset="https://placehold.co/800x600" media="(min-width: 577px)" />
-                <!-- Small devices (<577px) -->
-                <source srcset="https://placehold.co/400x300" media="(max-width: 576px)" />
-                <!-- Default image if none of the above media queries match -->
-                <img src="https://placehold.co/800x600" alt="An image placeholder" />
-              </picture>
-              <a href="#" class="card-thumb-link" tite="Card Thumb Link Title"></a>
-            </div>
-            <div class="card-content">
-              <div class="card-title">
-                <h3>Hello World This Is The Card Title And It's a Long Title</h3>
-              </div>
-              <div class="card-desc">
-                <p>
-                  Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie,
-                  dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus
-                  sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget
-                  condimentum velit, sit amet feugiat lectus.
-                </p>
-              </div>
-              <div class="card-action">
-                <BaseButton title="Hello World" path="#" />
-              </div>
-            </div>
+    </section>
+  </Transition>
+  <!-- End Work -->
+  <!-- Bio -->
+  <Transition name="fade">
+    <section v-if="currentView === 'nav-item-bio'" class="content">
+      <div class="container">
+        <div class="row">
+          <div class="column-6 column-md-4">
+            <h1>Bio</h1>
           </div>
         </div>
-
-        <!-- Card 2 -->
-        <div class="column-3 column-md-2">
-          <div class="card card-yellow">
-            <div class="card-thumb">
-              <picture>
-                <!-- Large devices (≥992px) -->
-                <source srcset="https://placehold.co/1600x1200" media="(min-width: 992px)" />
-                <!-- Medium devices (≥577px and <992px) -->
-                <source srcset="https://placehold.co/800x600" media="(min-width: 577px)" />
-                <!-- Small devices (<577px) -->
-                <source srcset="https://placehold.co/400x300" media="(max-width: 576px)" />
-                <!-- Default image if none of the above media queries match -->
-                <img src="https://placehold.co/800x600" alt="An image placeholder" />
-              </picture>
-              <a href="#" class="card-thumb-link" tite="Card Thumb Link Title"></a>
-            </div>
-            <div class="card-content">
-              <div class="card-title">
-                <h3>Hello World This Is The Card Title And It's a Long Title</h3>
-              </div>
-              <div class="card-desc">
-                <p>
-                  Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie,
-                  dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus
-                  sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget
-                  condimentum velit, sit amet feugiat lectus.
-                </p>
-              </div>
-              <div class="card-action">
-                <BaseButton title="Learn More" path="#" />
-              </div>
-            </div>
+        <div class="row">
+          <div class="column-2 column-md-2">
+            <picture>
+              <!-- Large devices (≥992px) -->
+              <source srcset="https://placehold.co/1200x1200" media="(min-width: 992px)" />
+              <!-- Medium devices (≥577px and <992px) -->
+              <source srcset="https://placehold.co/800x800" media="(min-width: 577px)" />
+              <!-- Small devices (<577px) -->
+              <source srcset="https://placehold.co/400x400" media="(max-width: 576px)" />
+              <!-- Default image if none of the above media queries match -->
+              <img src="https://placehold.co/800x800" alt="An image placeholder" />
+            </picture>
+          </div>
+          <div class="column-4 column-md-2">
+            <h2>Lorem ipsum dolor sit amet.</h2>
+            <p class="lead">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi eius, excepturi
+              nobis animi aut dolores esse reprehenderit molestiae quis? Fuga illo commodi
+              doloremque odio aspernatur, eos sit tempora expedita autem.
+            </p>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. In impedit illo non commodi
+              molestiae similique itaque deleniti perferendis, dolores asperiores magnam? Adipisci
+              alias exercitationem facilis magni blanditiis deleniti incidunt laboriosam?
+            </p>
           </div>
         </div>
-
-        <!-- Card 3 -->
-        <div class="column-3 column-md-2">
-          <div class="card card-yellow">
-            <div class="card-thumb">
-              <picture>
-                <!-- Large devices (≥992px) -->
-                <source srcset="https://placehold.co/1600x1200" media="(min-width: 992px)" />
-                <!-- Medium devices (≥577px and <992px) -->
-                <source srcset="https://placehold.co/800x600" media="(min-width: 577px)" />
-                <!-- Small devices (<577px) -->
-                <source srcset="https://placehold.co/400x300" media="(max-width: 576px)" />
-                <!-- Default image if none of the above media queries match -->
-                <img src="https://placehold.co/800x600" alt="An image placeholder" />
-              </picture>
-              <a href="#" class="card-thumb-link" tite="Card Thumb Link Title"></a>
-            </div>
-            <div class="card-content">
-              <div class="card-title">
-                <h3>Hello World This Is The Card Title And It's a Long Title</h3>
-              </div>
-              <div class="card-desc">
-                <p>
-                  Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie,
-                  dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus
-                  sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget
-                  condimentum velit, sit amet feugiat lectus.
-                </p>
-              </div>
-              <div class="card-action">
-                <BaseButton title="Learn More" path="#" />
-              </div>
-            </div>
+        <div class="row">
+          <div class="column-2 column-md-2">
+            <h3>Soft Skills</h3>
+            <ul>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Lorem ipsum dolor sit amet</li>
+            </ul>
           </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="column-3 column-md-2">
-          <div class="card card-red">
-            <div class="card-thumb">
-              <picture>
-                <!-- Large devices (≥992px) -->
-                <source srcset="https://placehold.co/1600x1200" media="(min-width: 992px)" />
-                <!-- Medium devices (≥577px and <992px) -->
-                <source srcset="https://placehold.co/800x600" media="(min-width: 577px)" />
-                <!-- Small devices (<577px) -->
-                <source srcset="https://placehold.co/400x300" media="(max-width: 576px)" />
-                <!-- Default image if none of the above media queries match -->
-                <img src="https://placehold.co/800x600" alt="An image placeholder" />
-              </picture>
-              <a href="#" class="card-thumb-link" tite="Card Thumb Link Title"></a>
-            </div>
-            <div class="card-content">
-              <div class="card-title">
-                <h3>Hello World This Is The Card Title And It's a Long Title</h3>
-              </div>
-              <div class="card-desc">
-                <p>
-                  Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie,
-                  dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus
-                  sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget
-                  condimentum velit, sit amet feugiat lectus.
-                </p>
-              </div>
-              <div class="card-action">
-                <BaseButton title="Learn More" path="#" />
-              </div>
-            </div>
+          <div class="column-2 column-md-2">
+            <h3>UX / UI Visual Design</h3>
+            <ul>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Lorem ipsum dolor sit amet</li>
+            </ul>
+          </div>
+          <div class="column-2 column-md-2">
+            <h3>Front-End</h3>
+            <ul>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Lorem ipsum dolor sit amet</li>
+            </ul>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section v-if="currentView === 'Bio'" class="content">
-    <div class="container">
-      <div class="row">
-        <div class="column-2 column-md-2">
-          <picture>
-            <!-- Large devices (≥992px) -->
-            <source srcset="https://placehold.co/1200x1200" media="(min-width: 992px)" />
-            <!-- Medium devices (≥577px and <992px) -->
-            <source srcset="https://placehold.co/800x800" media="(min-width: 577px)" />
-            <!-- Small devices (<577px) -->
-            <source srcset="https://placehold.co/400x400" media="(max-width: 576px)" />
-            <!-- Default image if none of the above media queries match -->
-            <img src="https://placehold.co/800x800" alt="An image placeholder" />
-          </picture>
-        </div>
-        <div class="column-4 column-md-2">
-          <h1>BIO: Lorem ipsum dolor sit amet.</h1>
-          <p class="lead">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi eius, excepturi nobis
-            animi aut dolores esse reprehenderit molestiae quis? Fuga illo commodi doloremque odio
-            aspernatur, eos sit tempora expedita autem.
-          </p>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. In impedit illo non commodi
-            molestiae similique itaque deleniti perferendis, dolores asperiores magnam? Adipisci
-            alias exercitationem facilis magni blanditiis deleniti incidunt laboriosam?
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="column-2 column-md-2">
-          <h3>Soft Skills</h3>
-          <ul>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-          </ul>
-        </div>
-        <div class="column-2 column-md-2">
-          <h3>UX / UI Visual Design</h3>
-          <ul>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-          </ul>
-        </div>
-        <div class="column-2 column-md-2">
-          <h3>Front-End</h3>
-          <ul>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-          </ul>
+    </section>
+  </Transition>
+  <!-- End Bio -->
+  <!-- Contact -->
+  <Transition name="fade">
+    <section v-if="currentView === 'nav-item-contact'" class="content">
+      <div class="container">
+        <div class="row">
+          <div class="column-6 column-md-6">
+            <h1>Contact</h1>
+            <form>
+              <div class="form-element">
+                <div class="form-label">
+                  <label>Something Label Blah</label>
+                </div>
+                <div class="form-control">
+                  <input type="text" placeholder="hello world" />
+                </div>
+              </div>
+              <div class="form-element">
+                <div class="form-label">
+                  <label>Something Label Blah</label>
+                </div>
+                <div class="form-control">
+                  <input type="text" placeholder="hello world" />
+                </div>
+              </div>
+              <div class="form-element">
+                <div class="form-label">
+                  <label>Something Label Blah</label>
+                </div>
+                <div class="form-control">
+                  <input type="text" placeholder="hello world" />
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section v-if="currentView === 'Contact'" class="content">
-    <div class="container">
-      <div class="row">
-        <div class="column-6 column-md-6">
-          <h1>Contact</h1>
-          <form>
-            <div class="form-element">
-              <div class="form-label">
-                <label>Something Label Blah</label>
-              </div>
-              <div class="form-control">
-                <input type="text" placeholder="hello world" />
-              </div>
-            </div>
-            <div class="form-element">
-              <div class="form-label">
-                <label>Something Label Blah</label>
-              </div>
-              <div class="form-control">
-                <input type="text" placeholder="hello world" />
-              </div>
-            </div>
-            <div class="form-element">
-              <div class="form-label">
-                <label>Something Label Blah</label>
-              </div>
-              <div class="form-control">
-                <input type="text" placeholder="hello world" />
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
+    </section>
+  </Transition>
+  <!-- End Contact -->
   <TheFooter
     notice="lorem ipsum sit dolar lorem ipsum sit dolar lorem ipsum sit dolar lorem ipsum sit dolar lorem ipsum sit dolar lorem ipsum sit dolar lorem ipsum sit dolar "
   />
-
-  <!--
-
-    <h1>{{ 'Test H1' }}</h1>
-      <h2 :style="currentColor">My Color Changes</h2>
-      <button @click="clickCount += 1">{{ clickCount }}</button>
-      <h3>Test H3</h3>
-      <h4>Test H4</h4>
-      <h5>Test H5</h5>
-      <h6>Test H6</h6>
-
-
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper my-class">
-      <HelloWorld msg="Rory Hurlburt Testing" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
-  -->
 </template>
 
 <style scoped lang="scss">
@@ -354,65 +221,22 @@ Explore routing
 
 .content {
   padding: vars.$gapL 0;
+  transition: all 0.32s linear;
 }
 
-// Card
-.card {
-  position: relative;
+.fade-enter-active {
+  opacity: 1;
+}
 
-  .card-thumb {
-    position: relative;
-    picture {
-      display: block;
-      border-radius: 32px;
-      margin-bottom: 8px;
-      overflow: hidden;
-      width: 100%;
-      height: auto;
-      img {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
-    }
-    a.card-thumb-link {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    &:before {
-      content: ' ';
-      display: block;
-      z-index: -1;
-      position: absolute;
-      top: 32px;
-      left: -3%;
-      width: 106%;
-      height: 106%;
-      border-radius: 32px;
-    }
-  }
+.fade-leave-active {
+  opacity: 0;
+}
 
-  &.card-red {
-    .card-thumb:before {
-      background-color: vars.$red;
-    }
-  }
+.fade-enter-from {
+  opacity: 0;
+}
 
-  &.card-yellow {
-    .card-thumb:before {
-      background-color: vars.$yellow;
-    }
-  }
-
-  .card-content {
-    background-color: vars.$blue-darker;
-    padding: vars.$gapM;
-    border-radius: 32px;
-    position: relative;
-  }
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
