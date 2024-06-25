@@ -1,5 +1,11 @@
 @use 'scss-reset/reset';
 
+// Smooth Fonts
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 // partials
 @import 'variables';
 @import 'mixins';

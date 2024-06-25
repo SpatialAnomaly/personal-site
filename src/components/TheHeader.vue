@@ -93,7 +93,7 @@ header {
         font-family: vars.$font-platypi;
       }
       .wordmark-subheading {
-        font-size: 10px;
+        font-size: 12px;
         line-height: 16px;
         text-transform: uppercase;
         font-weight: 700;

@@ -62,7 +62,13 @@ const props = defineProps<{
 .card-wrap {
   .card {
     position: relative;
-
+    transition: all 0.32s ease-in-out;
+    transform: scale(1, 1);
+    transform-origin: 50% 50%;
+    &:hover {
+      transform: scale(1.06, 1.06);
+      z-index: 1;
+    }
     .card-thumb {
       position: relative;
       picture {
@@ -72,6 +78,7 @@ const props = defineProps<{
         overflow: hidden;
         width: 100%;
         height: auto;
+
         img {
           display: block;
           width: 100%;
