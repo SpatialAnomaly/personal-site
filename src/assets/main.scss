@@ -11,3 +11,18 @@
 @import 'mixins';
 @import 'grid';
 @import 'typography';
+
+// Style Themes
+
+body {
+  color: $white;
+  background-color: $blue;
+  &.style-roundabout {
+    color: $white;
+    background-color: $blue;
+  }
+  &.style-brute {
+    color: $gray-dark;
+    background-color: $white;
+  }
+}

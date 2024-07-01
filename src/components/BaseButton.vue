@@ -41,4 +41,27 @@ const props = defineProps<{
   background-color: vars.$blue-lighter;
   color: vars.$white;
 }
+
+.style-brute {
+  .button:link,
+  .button:visited,
+  .button {
+    background-color: vars.$white;
+    color: vars.$gray-darker;
+    border-radius: 0;
+    padding: 8px 32px;
+    box-shadow: 0 0 0px 4px vars.$gray-darker;
+    transition: none;
+  }
+
+  .button:hover {
+    background-color: vars.$gray-darker;
+    color: vars.$white;
+  }
+
+  .button:active {
+    background-color: vars.$gray-dark;
+    color: vars.$white;
+  }
+}
 </style>

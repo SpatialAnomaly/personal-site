@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useCounterStore } from '@/stores/counter'
 interface ImageSrcset {
   small: string
   medium: string
@@ -8,6 +9,8 @@ interface ImageSrcset {
 const props = defineProps<{
   image: ImageSrcset
 }>()
+
+const store = useCounterStore()
 </script>
 
 <template>
@@ -26,6 +29,7 @@ const props = defineProps<{
     </div>
     <div class="column-4 column-md-2">
       <h2>Lorem ipsum dolor sit amet.</h2>
+      <button title="Count up" @click="store.count++">Count Up</button>
       <p class="lead">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi eius, excepturi nobis
         animi aut dolores esse reprehenderit molestiae quis? Fuga illo commodi doloremque odio

@@ -30,8 +30,9 @@ function isActive(navItemId: string) {
   return activeItem.value === navItemId ? 'active' : 'inactive'
 }
 
-function handleNavItemClick(navItemId: string) {
-  activeItem.value = navItemId // Update active item on click
+function handleNavItemClick(navItem: NavButtonProps) {
+  activeItem.value = navItem.id // Update active item on click
+  document.getElementsByTagName('title')[0].innerHTML = navItem.title
 }
 </script>
 
@@ -43,7 +44,7 @@ function handleNavItemClick(navItemId: string) {
         <NavButton
           :navItem="navItem"
           :state="isActive(navItem.id)"
-          @click.prevent="$emit('updateView', navItem.id), handleNavItemClick(navItem.id)"
+          @click.prevent="$emit('updateView', navItem.id), handleNavItemClick(navItem)"
         />
       </li>
     </ul>

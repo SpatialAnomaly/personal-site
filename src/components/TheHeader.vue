@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import BaseLogo from './BaseLogo.vue'
 
 defineProps<{
   altTxt: string
@@ -23,11 +24,7 @@ function handleClick() {
 <template>
   <header>
     <div class="logo">
-      <div class="glyph">
-        <picture>
-          <img src="@/assets/logo-glyph.svg" :alt="altTxt" width="125" height="125" />
-        </picture>
-      </div>
+      <div class="glyph"><BaseLogo /></div>
       <div class="wordmarks">
         <div class="wordmark-heading">{{ wordMarkHeading }}</div>
         <div class="wordmark-subheading">{{ wordMarkSubheading }}</div>

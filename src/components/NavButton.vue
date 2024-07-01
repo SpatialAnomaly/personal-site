@@ -70,4 +70,34 @@ a.nav-button:active {
   background-color: vars.$blue-lighter;
   color: vars.$blue-darker;
 }
+
+.style-brute {
+  a.nav-button,
+  a.nav-button:link,
+  a.nav-button:visited {
+    border-radius: 0;
+    background-color: vars.$white;
+    color: vars.$gray-darker;
+    box-shadow: 0 0 0px 4px vars.$gray-darker;
+  }
+
+  .nav-button.active,
+  a.nav-button.active,
+  .nav-button:hover,
+  a.nav-button:hover {
+    background-color: vars.$gray-darker;
+    color: vars.$white;
+  }
+
+  .nav-button.active,
+  a.nav-button.active {
+    cursor: not-allowed;
+  }
+
+  .nav-button:active,
+  a.nav-button:active {
+    background-color: vars.$gray-darker;
+    color: vars.$white;
+  }
+}
 </style>

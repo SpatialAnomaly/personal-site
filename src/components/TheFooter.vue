@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BaseLogo from './BaseLogo.vue'
 defineProps<{
   notice: string
 }>()
@@ -10,11 +11,7 @@ defineProps<{
       <div class="notice">
         {{ notice }}
       </div>
-      <div class="watermark">
-        <picture>
-          <img src="@/assets/logo-glyph.svg" width="125" height="125" />
-        </picture>
-      </div>
+      <div class="watermark"><BaseLogo /></div>
     </div>
   </footer>
 </template>
@@ -43,9 +40,17 @@ footer {
     }
 
     .watermark {
-      flex: 0 0 200px;
+      flex: 0 0 132px;
       margin-left: auto;
     }
+  }
+}
+
+.style-brute {
+  footer {
+    background-color: vars.$white;
+    border-top: 8px solid vars.$gray-darker;
+    color: vars.$gray-darker;
   }
 }
 </style>

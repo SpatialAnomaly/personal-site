@@ -52,8 +52,16 @@ const currentColor = computed(() => {
 // TODO
 /*
 
+Theme Switcher
+prefix with class
+browser api system prefers color scheme
+Create a store that uses Theme... when dropdown is used how to update store
+Current Theme by default
+Event Listener Change
+Watch is a vue function to explore
 
 How would one handle something global like a site name? Or manage meta / og data?
+Nuxt, SSR Server Side Rendering
 
 Explore routing
 */
@@ -161,5 +169,11 @@ Explore routing
 
 .fade-leave-to {
   opacity: 0;
+}
+
+.style-brute {
+  .content {
+    transition: none;
+  }
 }
 </style>
