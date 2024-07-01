@@ -151,6 +151,9 @@ button.aesthetic-picker-button:active {
     border-radius: 0;
     box-shadow: 0 0 0px 4px vars.$gray-darker;
     transition: none;
+    font-family: vars.$font-bebasneue;
+    font-size: vars.$em * 1.2;
+    line-height: vars.$em * 1.2;
     i {
       color: vars.$gray-darker;
     }
@@ -173,6 +176,44 @@ button.aesthetic-picker-button:active {
     border-radius: 0;
     box-shadow: 0 0 0px 4px vars.$gray-darker;
     transition: none;
+  }
+}
+
+.style-skue {
+  button.aesthetic-picker-button {
+    background-color: vars.$white;
+    color: vars.$gray-darker;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px -6px rgba(0, 0, 0, 0.4);
+    transition: all 0.16s linear;
+    border: 1px solid vars.$gray-light;
+    border-bottom: 2px solid vars.$gray;
+    i {
+      color: vars.$gray-darker;
+    }
+    &:hover {
+      background-color: vars.$blue;
+      color: vars.$white;
+      box-shadow: 0 6px 12px -6px rgba(0, 0, 0, 0.4);
+      i {
+        color: vars.$white;
+      }
+    }
+    &:active {
+      background-color: vars.$blue-darker;
+      color: vars.$white;
+      box-shadow: 0 -6px 12px -6px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .aesthetic-picker-dropdown {
+    background-color: vars.$white;
+    color: vars.$gray-darker;
+    border-radius: 4px;
+    transition: all 0.16s linear;
+    border: 1px solid vars.$gray-light;
+    border-bottom: 2px solid vars.$gray;
+    box-shadow: 0 4px 12px -6px rgba(0, 0, 0, 0.6);
   }
 }
 </style>

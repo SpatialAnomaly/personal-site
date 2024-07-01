@@ -50,6 +50,43 @@ a:active:not(.button) {
   text-decoration: none;
 }
 
-.material-icon {
-  font-family: $font-material-icons;
+.style-brute {
+  @each $heading, $size in $heading-sizes {
+    #{$heading} {
+      font-family: $font-bebasneue;
+    }
+  }
+  body {
+    font-family: $font-outfit;
+  }
+  p {
+    font-family: $font-outfit;
+  }
+  a:link:not(.button),
+  a:visited:not(.button) {
+    color: $blue-bright;
+  }
+
+  a:hover:not(.button) {
+    color: $blue-dark;
+  }
+
+  a:active:not(.button) {
+    color: $blue-darker;
+  }
+}
+
+.style-skue {
+  a:link:not(.button),
+  a:visited:not(.button) {
+    color: $blue;
+  }
+
+  a:hover:not(.button) {
+    color: $blue-dark;
+  }
+
+  a:active:not(.button) {
+    color: $blue-darker;
+  }
 }

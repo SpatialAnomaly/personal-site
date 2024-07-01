@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { SocialItem } from './types/customTypes'
-
 import TheHeader from './components/TheHeader.vue'
 import TheNavbar from './components/TheNavbar.vue'
 import TheFooter from './components/TheFooter.vue'
@@ -10,6 +9,8 @@ import BioView from './views/BioView.vue'
 // Fonts
 import '@fontsource/platypi'
 import '@fontsource/rubik'
+import '@fontsource/holtwood-one-sc'
+import '@fontsource/outfit'
 
 import { ref } from 'vue'
 
@@ -52,18 +53,10 @@ const currentColor = computed(() => {
 // TODO
 /*
 
-Theme Switcher
-prefix with class
-browser api system prefers color scheme
-Create a store that uses Theme... when dropdown is used how to update store
-Current Theme by default
-Event Listener Change
-Watch is a vue function to explore
-
 How would one handle something global like a site name? Or manage meta / og data?
 Nuxt, SSR Server Side Rendering
 
-Explore routing
+Explore routing amd what happens when a user clicks a card
 */
 </script>
 
@@ -174,6 +167,12 @@ Explore routing
 .style-brute {
   .content {
     transition: none;
+  }
+}
+
+.style-skue {
+  .content {
+    transition: all 0.16s linear;
   }
 }
 </style>

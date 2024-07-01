@@ -13,6 +13,10 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@fontsource/bebas-neue": "^5.0.20",
+    "@fontsource/holtwood-one-sc": "^5.0.20",
+    "@fontsource/montagu-slab": "^5.0.20",
+    "@fontsource/outfit": "^5.0.13",
     "@fontsource/platypi": "^5.0.2",
     "@fontsource/rubik": "^5.0.20",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",

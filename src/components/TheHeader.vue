@@ -119,4 +119,20 @@ header {
     }
   }
 }
+
+.style-brute {
+  header {
+    .wordmarks {
+      .wordmark-heading {
+        text-shadow: 0 -1px vars.$white;
+        font-family: vars.$font-bebasneue;
+        font-size: 48px;
+        line-height: 50px;
+      }
+      .wordmark-subheading {
+        font-family: vars.$font-outfit;
+      }
+    }
+  }
+}
 </style>

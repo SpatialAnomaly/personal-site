@@ -166,4 +166,44 @@ const props = defineProps<{
     }
   }
 }
+
+.style-skue {
+  .card-wrap {
+    .card {
+      transition: all 0.16s ease-in-out;
+      transform: scale(1, 1);
+      transform-origin: 50% 50%;
+      background-color: vars.$white;
+      box-shadow: 0 2px 8px -6px rgba(0, 0, 0, 0.4);
+      &:hover {
+        transform: scale(1, 1);
+        z-index: 1;
+      }
+      .card-thumb {
+        padding: vars.$gapS;
+        picture {
+          border-radius: 4px;
+          margin-bottom: 0px;
+        }
+        &:before {
+          display: none;
+        }
+      }
+
+      &.card-red {
+        border-top: 4px solid vars.$red;
+      }
+
+      &.card-yellow {
+        border-top: 4px solid vars.$yellow;
+      }
+
+      .card-content {
+        background-color: vars.$white;
+        padding: 0 vars.$gapS vars.$gapS vars.$gapS;
+        border-radius: 0px;
+      }
+    }
+  }
+}
 </style>

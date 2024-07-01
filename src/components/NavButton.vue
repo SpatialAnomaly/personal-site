@@ -79,6 +79,9 @@ a.nav-button:active {
     background-color: vars.$white;
     color: vars.$gray-darker;
     box-shadow: 0 0 0px 4px vars.$gray-darker;
+    font-family: vars.$font-bebasneue;
+    font-size: vars.$em * 1.2;
+    line-height: vars.$em * 1.2;
   }
 
   .nav-button.active,
@@ -98,6 +101,43 @@ a.nav-button:active {
   a.nav-button:active {
     background-color: vars.$gray-darker;
     color: vars.$white;
+  }
+}
+
+.style-skue {
+  a.nav-button,
+  a.nav-button:link,
+  a.nav-button:visited {
+    border-radius: 4px;
+    background-color: vars.$white;
+    color: vars.$gray-darker;
+    border: 1px solid vars.$gray-light;
+    border-bottom: 2px solid vars.$gray;
+    box-shadow: 0 2px 8px -6px rgba(0, 0, 0, 0.4);
+    transition: all 0.16s linear;
+  }
+
+  .nav-button.active,
+  a.nav-button.active,
+  .nav-button:hover,
+  a.nav-button:hover {
+    background-color: vars.$blue;
+    color: vars.$white;
+    box-shadow: 0 6px 12px -6px rgba(0, 0, 0, 0.4);
+    border: 1px solid vars.$blue-darker;
+    border-bottom: 2px solid vars.$blue-darker;
+  }
+
+  .nav-button.active,
+  a.nav-button.active {
+    cursor: not-allowed;
+  }
+
+  .nav-button:active,
+  a.nav-button:active {
+    background-color: vars.$blue-darker;
+    color: vars.$white;
+    box-shadow: 0 -6px 12px -6px rgba(0, 0, 0, 0.4);
   }
 }
 </style>

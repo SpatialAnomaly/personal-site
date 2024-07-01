@@ -53,4 +53,11 @@ footer {
     color: vars.$gray-darker;
   }
 }
+
+.style-skue {
+  footer {
+    background-color: vars.$gray-dark;
+    color: vars.$white;
+  }
+}
 </style>

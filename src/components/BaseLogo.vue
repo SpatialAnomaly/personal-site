@@ -40,4 +40,10 @@ import { ref } from 'vue'
     fill: vars.$gray-darker;
   }
 }
+
+.style-skue {
+  .cls-1 {
+    fill: vars.$gray-darker;
+  }
+}
 </style>
