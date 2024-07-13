@@ -37,3 +37,8 @@ npm run build
 ```sh
 npm run lint
 ```
+
+### TODO more themes
+
+Art Deco?
+Looney Toons?

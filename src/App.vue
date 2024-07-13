@@ -1,15 +1,19 @@
 <script setup lang="ts">
+// Types
 import type { SocialItem } from './types/customTypes'
+
+// Components
 import TheHeader from './components/TheHeader.vue'
 import TheNavbar from './components/TheNavbar.vue'
 import TheFooter from './components/TheFooter.vue'
 import WorkView from './views/WorkView.vue'
 import BioView from './views/BioView.vue'
+import ContactView from './views/ContactView.vue'
 
 // Fonts
 import '@fontsource/platypi'
 import '@fontsource/rubik'
-import '@fontsource/holtwood-one-sc'
+import '@fontsource/bebas-neue'
 import '@fontsource/outfit'
 
 import { ref } from 'vue'
@@ -53,10 +57,14 @@ const currentColor = computed(() => {
 // TODO
 /*
 
-How would one handle something global like a site name? Or manage meta / og data?
+Explore Nuxt
 Nuxt, SSR Server Side Rendering
 
 Explore routing amd what happens when a user clicks a card
+
+Contact Form handling
+
+Am I loading fonts correctly?
 */
 </script>
 
@@ -93,39 +101,7 @@ Explore routing amd what happens when a user clicks a card
     <!-- Contact -->
     <Transition name="fade">
       <section v-if="currentView === 'nav-item-contact'" class="content">
-        <div class="container">
-          <div class="row">
-            <div class="column-6 column-md-6">
-              <h1>Contact</h1>
-              <form>
-                <div class="form-element">
-                  <div class="form-label">
-                    <label>Something Label Blah</label>
-                  </div>
-                  <div class="form-control">
-                    <input type="text" placeholder="hello world" />
-                  </div>
-                </div>
-                <div class="form-element">
-                  <div class="form-label">
-                    <label>Something Label Blah</label>
-                  </div>
-                  <div class="form-control">
-                    <input type="text" placeholder="hello world" />
-                  </div>
-                </div>
-                <div class="form-element">
-                  <div class="form-label">
-                    <label>Something Label Blah</label>
-                  </div>
-                  <div class="form-control">
-                    <input type="text" placeholder="hello world" />
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+        <ContactView />
       </section>
     </Transition>
     <!-- End Contact -->

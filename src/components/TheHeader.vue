@@ -51,6 +51,7 @@ function handleClick() {
 
 <style scoped lang="scss">
 @use '@/assets/_variables.scss' as vars;
+@use '@/assets/_grid.scss' as gridvars;
 @use '@/assets/_mixins.scss' as mixins;
 
 header {
@@ -62,6 +63,10 @@ header {
   justify-content: center;
   gap: vars.$gapM;
   @include mixins.outer-wrap;
+
+  @media screen and (max-width: gridvars.$lg-breakpoint) {
+    padding: vars.$gapM;
+  }
 
   .logo {
     flex: 0 0 360px;

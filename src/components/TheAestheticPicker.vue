@@ -9,9 +9,7 @@ export type AestheticOption = {
 const aetheticOptions: AestheticOption[] = [
   { title: 'Roundabout', data: 'style-roundabout' },
   { title: 'Brutal Truth', data: 'style-brute' },
-  { title: '3rd Dimensional Aperture', data: 'style-skue' },
-  { title: 'Lorem', data: 'style-lorem' },
-  { title: 'Ipsum', data: 'style-ipsum' }
+  { title: '3rd Dimensional Aperture', data: 'style-skue' }
 ]
 
 defineProps<{
@@ -47,7 +45,13 @@ const setStyle = (style: string) => {
       <div class="aesthetic-picker-dropdown" v-show="showDropdown">
         <ul>
           <li v-for="aesthetic in aetheticOptions" :key="aesthetic.data">
-            <a data-style="{{aesthetic.data}}" @click="setStyle(aesthetic.data)">
+            <a
+              data-style="{{aesthetic.data}}"
+              @click="setStyle(aesthetic.data)"
+              tabindex="0"
+              href="#"
+              :class="{ active: store.style === aesthetic.data }"
+            >
               <i v-if="store.style === aesthetic.data" class="fa fa-check"></i>
               {{ aesthetic.title }}</a
             >
@@ -60,10 +64,14 @@ const setStyle = (style: string) => {
 
 <style scoped lang="scss">
 @use '@/assets/_variables.scss' as vars;
+@use '@/assets/_grid.scss' as gridvars;
 
 .aesthetic-picker-wrap {
   position: relative;
   flex: 0 0 320px;
+  @media screen and (max-width: gridvars.$lg-breakpoint) {
+    flex: 0 0 auto;
+  }
 }
 
 button.aesthetic-picker-button {
@@ -75,12 +83,12 @@ button.aesthetic-picker-button {
   align-items: center;
   flex-wrap: nowrap;
   font-size: vars.$em;
+  line-height: vars.$em;
   font-weight: 700;
   font-family: vars.$font-rubik;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  line-height: 1.8em;
   padding: 8px 32px;
   background-color: vars.$blue-darker;
   color: vars.$white;
@@ -121,6 +129,9 @@ button.aesthetic-picker-button:active {
   a {
     display: block;
     cursor: pointer;
+    &.active {
+      color: vars.$gray-light;
+    }
   }
 }
 
@@ -188,6 +199,7 @@ button.aesthetic-picker-button:active {
     transition: all 0.16s linear;
     border: 1px solid vars.$gray-light;
     border-bottom: 2px solid vars.$gray;
+    letter-spacing: normal;
     i {
       color: vars.$gray-darker;
     }

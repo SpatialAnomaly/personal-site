@@ -25,8 +25,7 @@ const props = defineProps<{
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  line-height: 1.8em;
-  padding: 4px 32px;
+  padding: 12px 32px;
   background-color: vars.$white;
   color: vars.$blue;
   border-radius: 12px;
@@ -50,12 +49,12 @@ const props = defineProps<{
     background-color: vars.$white;
     color: vars.$gray-darker;
     border-radius: 0;
-    padding: 8px 32px;
+    padding: 12px 32px;
     box-shadow: 0 0 0px 4px vars.$gray-darker;
     transition: none;
     font-family: vars.$font-bebasneue;
     font-size: vars.$em * 1.2;
-    line-height: vars.$em * 1.2;
+    line-height: vars.$em;
   }
 
   .button:hover {
@@ -80,6 +79,8 @@ const props = defineProps<{
     border-bottom: 2px solid vars.$gray;
     box-shadow: 0 2px 8px -6px rgba(0, 0, 0, 0.4);
     transition: all 0.16s linear;
+    letter-spacing: normal;
+    padding: 12px 16px;
   }
   .button:hover {
     background-color: vars.$blue;

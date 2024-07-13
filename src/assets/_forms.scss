@@ -1,0 +1,46 @@
+input[type='text'],
+input[type='email'] {
+  font-size: $em;
+  line-height: $em;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 12px 16px;
+  background-color: $white;
+  color: $blue;
+  border-radius: 12px;
+}
+
+textarea {
+  font-size: $em;
+  line-height: $em;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 12px 16px;
+  background-color: $white;
+  color: $blue;
+  border-radius: 12px;
+}
+
+.form-button {
+  display: inline-block;
+  font-size: $em;
+  line-height: $em;
+  font-weight: 700;
+  font-family: inherit;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px 32px;
+  background-color: $white;
+  color: $blue;
+  border-radius: 12px;
+  transition: all 0.08s linear;
+  &:hover {
+    background-color: $gray-lighter;
+    color: $blue-darker;
+  }
+  &:active {
+    background-color: $blue-lighter;
+    color: $white;
+  }
+}

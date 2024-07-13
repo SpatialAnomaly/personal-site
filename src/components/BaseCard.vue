@@ -174,7 +174,7 @@ const props = defineProps<{
       transform: scale(1, 1);
       transform-origin: 50% 50%;
       background-color: vars.$white;
-      box-shadow: 0 2px 8px -6px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.4);
       &:hover {
         transform: scale(1, 1);
         z-index: 1;

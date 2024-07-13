@@ -50,6 +50,10 @@ a:active:not(.button) {
   text-decoration: none;
 }
 
+*:focus-visible {
+  outline: 4px dashed darkorange;
+}
+
 .style-brute {
   @each $heading, $size in $heading-sizes {
     #{$heading} {
