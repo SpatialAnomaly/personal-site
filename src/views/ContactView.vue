@@ -21,9 +21,9 @@ function sendForm(formData: FormData) {
         records: [
           {
             fields: {
-              name: formData.name,
-              email: formData.email,
-              comments: formData.comments
+              Name: formData.name,
+              Email: formData.email,
+              Message: formData.comments
             }
           }
         ]
