@@ -36,8 +36,15 @@ import { ref } from 'vue'
 }
 
 .style-brute {
-  .cls-1 {
-    fill: vars.$gray-darker;
+  header {
+    .cls-1 {
+      fill: vars.$gray-darker;
+    }
+  }
+  footer {
+    .cls-1 {
+      fill: vars.$white;
+    }
   }
 }
 

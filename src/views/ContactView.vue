@@ -1,5 +1,46 @@
 <script setup lang="ts">
 import { FormKit } from '@formkit/vue'
+import axios from 'axios'
+
+type FormData = {
+  name: string
+  email: string
+  comments: string
+}
+
+function sendForm(formData: FormData) {
+  console.log(formData)
+
+  const airtableUrl = 'https://api.airtable.com/v0/appyakULO8J61yyOn/tblF1CQMhtRuqCO8E'
+  const airtableApiKey = import.meta.env.AIRTABLE_API_KEY
+
+  axios
+    .post(
+      airtableUrl,
+      {
+        records: [
+          {
+            fields: {
+              name: formData.name,
+              email: formData.email,
+              comments: formData.comments
+            }
+          }
+        ]
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${airtableApiKey}`
+        }
+      }
+    )
+    .then((response) => {
+      console.log(response.data)
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+}
 </script>
 
 <template>
@@ -12,14 +53,16 @@ import { FormKit } from '@formkit/vue'
     <div class="row">
       <div class="column-6 column-md-6">
         <FormKit
+          id="contact-form"
           type="form"
           :submit-attrs="{
             inputClass: 'form-button'
           }"
+          @submit="sendForm($event)"
         >
-          <FormKit type="text" label="Name" validation="required" />
-          <FormKit type="email" label="Email" validation="required" />
-          <FormKit type="textarea" label="Comments" validation="required" />
+          <FormKit type="text" label="Name" name="name" validation="required" />
+          <FormKit type="email" label="Email" name="email" validation="required|email" />
+          <FormKit type="textarea" label="Comments" name="comments" validation="required" />
         </FormKit>
       </div>
     </div>

@@ -79,9 +79,7 @@ function toggleMobileMenuState() {
         <NavButton
           :navItem="navItem"
           :state="isActive(navItem.id)"
-          @click.prevent="
-            $emit('updateView', navItem.id), handleNavItemClick(navItem), toggleMobileMenuState()
-          "
+          @click.prevent="$emit('updateView', navItem.id), handleNavItemClick(navItem)"
         />
       </li>
     </ul>

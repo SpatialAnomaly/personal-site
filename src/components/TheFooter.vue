@@ -68,9 +68,8 @@ footer {
 
 .style-brute {
   footer {
-    background-color: vars.$white;
-    border-top: 8px solid vars.$gray-darker;
-    color: vars.$gray-darker;
+    background-color: vars.$gray-darker;
+    color: vars.$white;
   }
 }
 

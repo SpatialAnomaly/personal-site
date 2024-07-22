@@ -64,7 +64,6 @@ Explore routing amd what happens when a user clicks a card
 
 Contact Form handling
 
-Am I loading fonts correctly?
 */
 </script>
 
