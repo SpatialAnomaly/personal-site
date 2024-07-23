@@ -13,7 +13,7 @@ function sendForm(formData: FormData) {
 
   const airtableUrl = 'https://api.airtable.com/v0/appyakULO8J61yyOn/tblF1CQMhtRuqCO8E'
   const airtableApiKey = import.meta.env.VITE_AIRTABLE_API_KEY
-  console.log(airtableApiKey)
+
   axios
     .post(
       airtableUrl,
