@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { FormKit } from '@formkit/vue'
 import axios from 'axios'
+import { ref } from 'vue'
 
 type FormData = {
   name: string
@@ -8,8 +9,10 @@ type FormData = {
   comments: string
 }
 
+const success = ref(false)
+
 function sendForm(formData: FormData) {
-  console.log(formData)
+  //console.log(formData)
 
   const airtableUrl = 'https://api.airtable.com/v0/appyakULO8J61yyOn/tblF1CQMhtRuqCO8E'
   const airtableApiKey = import.meta.env.VITE_AIRTABLE_API_KEY
@@ -35,7 +38,8 @@ function sendForm(formData: FormData) {
       }
     )
     .then((response) => {
-      console.log(response.data)
+      //console.log(response.data)
+      success.value = true
     })
     .catch((error) => {
       console.error(error)
@@ -52,6 +56,9 @@ function sendForm(formData: FormData) {
     </div>
     <div class="row">
       <div class="column-6 column-md-6">
+        <div class="success-msg" v-if="success">
+          <p><strong>Success!</strong> Your message has been sent. Thank you!</p>
+        </div>
         <FormKit
           id="contact-form"
           type="form"
@@ -59,6 +66,7 @@ function sendForm(formData: FormData) {
             inputClass: 'form-button'
           }"
           @submit="sendForm($event)"
+          v-if="!success"
         >
           <FormKit type="text" label="Name" name="name" validation="required" />
           <FormKit type="email" label="Email" name="email" validation="required|email" />
@@ -68,3 +76,5 @@ function sendForm(formData: FormData) {
     </div>
   </div>
 </template>
+
+<style scoped lang="scss"></style>
