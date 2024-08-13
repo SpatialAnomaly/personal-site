@@ -6,13 +6,14 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    VueDevTools(),
-  ],
+  plugins: [vue(), VueDevTools()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  server: {
+    host: '0.0.0.0', // This makes the server accessible externally
+    port: 3000 // Change this to any port you prefer
   }
 })

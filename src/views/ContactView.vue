@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { FormKit } from '@formkit/vue'
 import axios from 'axios'
+import { VueReCaptcha, useReCaptcha } from 'vue-recaptcha-v3'
 import { ref } from 'vue'
+import { exit } from 'process'
 
 type FormData = {
   name: string
@@ -11,12 +13,14 @@ type FormData = {
 
 const success = ref(false)
 
-function sendForm(formData: FormData) {
-  //console.log(formData)
+const { executeRecaptcha, recaptchaLoaded } = useReCaptcha()
 
+// express?
+// serverless functions
+
+function postToAirtable(formData: FormData) {
   const airtableUrl = 'https://api.airtable.com/v0/appyakULO8J61yyOn/tblF1CQMhtRuqCO8E'
   const airtableApiKey = import.meta.env.VITE_AIRTABLE_API_KEY
-
   axios
     .post(
       airtableUrl,
@@ -38,11 +42,31 @@ function sendForm(formData: FormData) {
       }
     )
     .then((response) => {
-      //console.log(response.data)
+      console.log(response.data)
       success.value = true
     })
     .catch((error) => {
       console.error(error)
+    })
+}
+
+async function handleSubmit(formData: FormData) {
+  //console.log(formData)
+  await recaptchaLoaded()
+  const token = await executeRecaptcha('contact')
+
+  axios
+    .post('http://localhost:4000/verify-recaptcha', {
+      action: 'contact',
+      token
+    })
+    .then((response) => {
+      console.log(response.data)
+      if (response.data.success) {
+        postToAirtable(formData)
+      } else {
+        alert('You are bot')
+      }
     })
 }
 </script>
@@ -65,7 +89,7 @@ function sendForm(formData: FormData) {
           :submit-attrs="{
             inputClass: 'form-button'
           }"
-          @submit="sendForm($event)"
+          @submit="handleSubmit($event)"
           v-if="!success"
         >
           <FormKit type="text" label="Name" name="name" validation="required" />
